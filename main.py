@@ -1,6 +1,17 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Web Service de Divisas - Actividad 2")
+
+# --- CONFIGURACIÓN DE CORS (El candado de seguridad) ---
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite que tu HTML se conecte
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# -------------------------------------------------------
 
 # Tasas de cambio aproximadas (puedes ajustarlas si lo deseas)
 TASA_EURO_MXN = 18.50
